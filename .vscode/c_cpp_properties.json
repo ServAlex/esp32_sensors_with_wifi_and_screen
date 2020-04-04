@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceRoot}",
+                "C:\\Users\\alex\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\1.0.4\\**",
+                "C:\\Users\\alex\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\**",
+                "D:\\software\\Arduino\\hardware\\tools\\**",
+                "D:\\software\\Arduino\\libraries\\**",
+                "C:\\Users\\alex\\Documents\\Arduino\\hardware\\tools\\**",
+                "C:\\Users\\alex\\Documents\\Arduino\\libraries\\**",
+                
+                "/home/alex/.arduino15/packages/esp32/hardware/esp32/1.0.4/**",
+                "/home/alex/.arduino15/packages/esp32/tools/**",
+                "/home/alex/Arduino/libraries/**"
+            ],
+            "forcedInclude": [],
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 4
+}
