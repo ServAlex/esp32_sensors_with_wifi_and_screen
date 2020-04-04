@@ -44,6 +44,11 @@ void displaySetup()
     }
 }
 
+void drawStringWithOffset(String string, int32_t dx, int32_t dy )
+{
+  tft.drawString(string, tft.width() / 2 + dx, tft.height() / 2 + dy);
+}
+
 void clearScreen()
 {
   tft.fillScreen(TFT_BLACK);
