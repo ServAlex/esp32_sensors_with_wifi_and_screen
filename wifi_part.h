@@ -8,9 +8,11 @@
 // create this file with 2 const char* variables: ssid and password
 #include "networkCredentials.h"
 
+String ip = "0.0.0.0";
 WebServer server(80);
 
-void handleNotFound() {
+void handleNotFound()
+{
   String message = "File Not Found\n\n";
   message += "URI: " + server.uri();
   message += "\nMethod: " + (server.method() == HTTP_GET) ? "GET" : "POST";
@@ -22,25 +24,27 @@ void handleNotFound() {
   server.send(404, "text/plain", message);
 }
 
-void wifiSetup(void) {
+void wifiSetup(void)
+{
   WiFi.mode(WIFI_STA);
-  //WiFi.begin(ssid, password);
 
   int current = -1;
+  int atemptsRemaining = ssids_count*6;
 
   // Wait for connection
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED && atemptsRemaining-->0) {
     current = (current+1)%ssids_count;
     WiFi.begin(ssids[current], passwords[current]);
     Serial.print("\nAttempting ");
     Serial.println(ssids[current]);
-    delay(5000);
+    delay(2000);
   }
 
   Serial.print("\nConnected to ");
   Serial.println(ssids[current]);
   Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
+  ip = WiFi.localIP().toString();
+  Serial.println(ip);
 
   if (MDNS.begin("esp32")) {
     Serial.println("MDNS responder started");
@@ -76,9 +80,10 @@ void wifiSetup(void) {
   Serial.println("HTTP server started");
 }
 
-void wifiLoop(void) {
-  server.handleClient();
+void wifiLoop(void) 
+{
+  if(WiFi.status() == WL_CONNECTED)
+    server.handleClient();
 }
-
 
 #endif

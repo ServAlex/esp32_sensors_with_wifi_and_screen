@@ -28,6 +28,11 @@ void setup()
     sensorsSetup();
     wifiSetup();
 
+    clearScreen();
+    tft.setTextColor(TFT_GREEN, TFT_BLACK);
+    drawStringWithOffset("ip " + String(ip), 0, 0);
+    delay(5000);
+
     report();
 }
 
