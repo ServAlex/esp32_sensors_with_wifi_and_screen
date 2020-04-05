@@ -24,15 +24,21 @@ void handleNotFound() {
 
 void wifiSetup(void) {
   WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
+  //WiFi.begin(ssid, password);
+
+  int current = -1;
 
   // Wait for connection
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
+    current = (current+1)%ssids_count;
+    WiFi.begin(ssids[current], passwords[current]);
+    Serial.print("\nAttempting ");
+    Serial.println(ssids[current]);
+    delay(5000);
   }
+
   Serial.print("\nConnected to ");
-  Serial.println(ssid);
+  Serial.println(ssids[current]);
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
 
