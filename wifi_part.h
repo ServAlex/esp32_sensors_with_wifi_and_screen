@@ -56,9 +56,29 @@ void wifiSetup(void)
     message += "<a href=\"http://192.168.0.248/all\">All</a><br>";
     message += "<a href=\"http://192.168.0.248/temp\">Temperature</a><br>";
     message += "<a href=\"http://192.168.0.248/humid\">Humidity</a><br>";
-    message += "<a href=\"http://192.168.0.248/lux\">Lux</a>";
+    message += "<a href=\"http://192.168.0.248/lux\">Lux</a><br>";
     message += "<a href=\"http://192.168.0.248/co2\">CO2</a><br>";
     message += "<a href=\"http://192.168.0.248/tvoc\">Volotiles</a>";
+    message += "\
+   <h3>Normal CO<sub>2</sub> Levels</h3>\
+   <p>The effects of CO<sub>2</sub> on adults at good health can be summarized to:</p>\
+   <ul>\
+      <li>normal outdoor level: <i>350 - 450 ppm</i></li>\
+      <li>acceptable levels: <i>&lt; 600 ppm</i></li>\
+      <li>complaints of stiffness and odors: <i>600 - 1000 ppm</i></li>\
+      <li>ASHRAE and OSHA standards: <i>1000 ppm</i></li>\
+      <li>general drowsiness: <i>1000 - 2500 ppm</i></li>\
+      <li>adverse health effects may be expected: <i>2500 - 5000 ppm</i></li>\
+      <li>maximum allowed concentration within a 8 hour working period: <i>5000 - 10000 ppm&nbsp;&nbsp;</i></li>\
+      <li>maximum allowed concentration within a<i> 15 minute </i>working period:<i> <i>30000 ppm <br></i></i></li>\
+   </ul>\
+   <p>The levels above are quite normal and maximum levels may occasionally happen from time to time. In general - ventilation rates should keep carbon dioxide concentrations below <em>1000 ppm</em> to create indoor air quality conditions acceptable to most individuals.</p>\
+   <h3>Extreme and Dangerous CO<sub>2</sub> Levels</h3>\
+   <ul>\
+      <li>slightly intoxicating, breathing and pulse rate increase, nausea: <em>30000 - 40000 ppm</em></li>\
+      <li>above plus headaches and sight impairment: <i>50000 ppm</i></li>\
+      <li>unconscious, further exposure death: <i>100000 ppm</i></li>\
+   </ul>";
     message += "</body></html>";
     server.send(200, "text/html", message);
   });

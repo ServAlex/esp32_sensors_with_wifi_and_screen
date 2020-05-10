@@ -29,6 +29,8 @@ int intensity_max = 60;
 int co2 = 0;
 int tvoc = 0;
 
+
+
 void sensorsSetup()
 {
 	Wire.begin(); //Inialize I2C Hardware
