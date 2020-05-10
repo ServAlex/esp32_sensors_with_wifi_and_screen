@@ -8,9 +8,11 @@ void report()
 {
   clearScreen();
   tft.setTextColor(TFT_GREEN, TFT_BLACK);
-  drawStringWithOffset("Temp " + String(temperature), 0, -30);
-  drawStringWithOffset("Humid " + String(humidity), 0, 0);
-  drawStringWithOffset("Lux " + String(lux) + ", " + String(lux_index), 0, 30);
+  drawStringWithOffset("Temp " + String(temperature), 0, -30-30);
+  drawStringWithOffset("Humid " + String(humidity), 0, 0-30);
+  drawStringWithOffset("Lux " + String(lux) + ", " + String(lux_index), 0, 30-30);
+  drawStringWithOffset("co2 " + String(co2), 0, 30);
+  drawStringWithOffset("tvoc " + String(tvoc), 0, 60);
 
   //tft.fillCircle(35, tft.height()/2-30 + currentMenu*30, 3, TFT_GREEN);
   //tft.drawCircle(35, tft.height()/2-30 + currentMenu*30, 3, TFT_GREEN);

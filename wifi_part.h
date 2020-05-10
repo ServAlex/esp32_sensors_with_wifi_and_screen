@@ -57,12 +57,19 @@ void wifiSetup(void)
     message += "<a href=\"http://192.168.0.248/temp\">Temperature</a><br>";
     message += "<a href=\"http://192.168.0.248/humid\">Humidity</a><br>";
     message += "<a href=\"http://192.168.0.248/lux\">Lux</a>";
+    message += "<a href=\"http://192.168.0.248/co2\">CO2</a><br>";
+    message += "<a href=\"http://192.168.0.248/tvoc\">Volotiles</a>";
     message += "</body></html>";
     server.send(200, "text/html", message);
   });
 
   server.on("/all", [](){
-    server.send(200, "text/plain", "Temperature: \t"+String(temperature)+"\nHumidity: \t"+String(humidity)+"\nLux: \t\t"+String(lux));
+    server.send(200, "text/plain", "Temperature: \t"+String(temperature)+
+                                   "\nHumidity: \t"+String(humidity)+
+                                   "\nLux: \t\t"+String(lux)+
+                                   "\nCO2: \t"+String(co2)+
+                                   "\ntvoc: \t"+String(tvoc)
+                                   );
   });
   server.on("/temp", [](){
     server.send(200, "text/plain", String(temperature));
@@ -72,6 +79,13 @@ void wifiSetup(void)
   });
   server.on("/lux", [](){
     server.send(200, "text/plain", String(lux));
+  });
+
+  server.on("/co2", [](){
+    server.send(200, "text/plain", String(co2));
+  });
+  server.on("/tvoc", [](){
+    server.send(200, "text/plain", String(tvoc));
   });
 
   server.onNotFound(handleNotFound);
